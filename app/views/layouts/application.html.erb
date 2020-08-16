@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Everyone's New Gear</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1><%= link_to "Everyone's New Gear . . .", root_path %></h1>
+      <div class="header-list">
+      <ul>
+      <% if user_signed_in? %>
+        <li>ログイン中: <%= current_user.username  %></li>
+        <li><%= link_to "マイページへ", user_path(current_user.id) %></li>
+        <li><%= link_to "画像一覧", images_posts_path %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete ,data: {confirm: "ログアウトしますか？"}%></li>
+      <% else %>
+        <li><%= link_to "画像一覧", images_posts_path %></li>
+        <li><%= link_to "ログイン", new_user_session_path %></li>
+        <li><%= link_to "新規登録", new_user_registration_path %></li>
+      <% end %>
+      </ul>
+      </div>
+    </header>
+    <div class="main">
+      <%= yield %>
+    </div>
+
+    <footer>
+      <p>© 2020 Everyone's New Gear... by nimuyohu</p>
+    </footer>
+  </body>
+</html>

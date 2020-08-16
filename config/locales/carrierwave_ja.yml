@@ -1,0 +1,4 @@
+ja:
+  errors:
+    messages:
+      extension_whitelist_error: "%{extension}形式のアップロードは許可されていません。アップロードできる形式はjpg,jpeg,gif,pngです。"

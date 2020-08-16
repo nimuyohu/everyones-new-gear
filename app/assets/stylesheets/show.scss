@@ -1,0 +1,65 @@
+.show{
+    text-align: center;
+    width: 100%;
+    margin: 10px auto;
+}
+.comment-wrapper{
+    border: solid black;
+}
+
+.posts-container {
+    text-align: center;
+    width: 100%;
+    margin: 10px auto;
+}
+.post {
+border-bottom: solid orange;
+margin-top: 10px;
+padding-top: 20px;
+}
+.main-box {
+margin: 5px 0;
+}
+.time {
+display: flex;
+justify-content: flex-end;
+}
+
+.form-error{
+    color: orangered;
+}
+
+.form{
+    border: solid rgb(185, 219, 255);
+    margin: 0 auto;
+    width: 75%;
+    border: solid #d3def1;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #d3def1;
+    font-size: 25px;
+}
+
+textarea{
+    width: 95%;
+    height: 100px;
+}
+
+.title{
+    font-size: 50px;
+}
+
+.submit {
+width: 200px;
+font-size: 20px;
+margin-top: 30px;
+margin-bottom: 30px;
+}
+
+.search{
+    width: 200px;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+

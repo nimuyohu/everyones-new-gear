@@ -1,0 +1,59 @@
+<%= stylesheet_link_tag 'index', :media => "all" %>
+<div class="posts-container">
+    <h2 class="title">あなたの my new gear... を全世界に共有しよう</h2>
+    <br>
+    <% if user_signed_in? %>
+    <div class="form">
+        <h1>my new gear...する</h1>
+        <% @post.errors.full_messages.each do |message| %>
+                <div class="form-error">
+                    <%= message %>
+                </div>
+            <% end %>
+        <%= form_for @post do |f| %>
+            <div class="field">
+                <%= f.label :画像 %>
+                <br>
+                <%= f.file_field :image %>
+                <p>※jpg/jpeg/gif/png形式のみ</p>
+            </div>
+            <div class="field">
+                <%= f.label :content %>
+                <%= f.text_area :content,:placeholder => "商品の説明" , :size => 140 %>
+            </div>
+                <%= f.submit "投稿する",class: "submit"%>
+        <% end %>
+        </div>
+    <%end%>
+    <br>
+    <h3>投稿を検索</h3>
+    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+        <%= text_field_tag :search,'',class: "search"%>
+        <%= submit_tag '検索する'  %>
+    <% end %>
+    <% @posts.each do |t| %>
+        <div class="post">
+            <div class="main-box">
+                <ul>
+                    <h2>my new gear...</h2>
+                    <li>
+                        <%= link_to image_tag(t.image_url, size: "500x400"), post_path(t.id) %>
+                    </li>
+                    <li>
+                        <%= t.content %>
+                    </li>
+                    <li>
+                        投稿者：<%= link_to t.user.username, user_path(t.user.id) %>
+                    </li>
+                    <li>
+                        <%= t.created_at.strftime("%Y/%m/%d　%H:%M:%S") %>
+                    </li>
+                    <% if user_signed_in? && current_user.id == t.user.id %>
+                    <%= link_to '削除',post_path(t.id),method: :delete,data: {confirm: "削除しますか？"} %>
+                    <% end %>
+                    <h3>❤️<%= t.likes.count %></h3>
+                </ul>             
+            </div>
+        </div>
+    <% end %>
+</div>

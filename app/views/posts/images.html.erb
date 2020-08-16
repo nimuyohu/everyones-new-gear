@@ -1,0 +1,9 @@
+<%= link_to "一覧に戻る", posts_path %>
+<h2>投稿を検索</h2>
+<%= form_tag({controller:"posts",action:"images"}, method: :get) do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索する'  %>
+<% end %>
+<% @posts.each do |t| %>
+    <%= link_to image_tag(t.image_url, size: "250x200"), post_path(t.id) %>
+<% end %>
